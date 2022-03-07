@@ -1,0 +1,31 @@
+MACHINE ??= "tinker-board-s"
+DISTRO ?= "openbmc-phosphor"
+PACKAGE_CLASSES ?= "package_ipk"
+SANITY_TESTED_DISTROS:append ?= " *"
+EXTRA_IMAGE_FEATURES ?= "debug-tweaks"
+USER_CLASSES ?= "buildstats"
+PATCHRESOLVE = "noop"
+BB_DISKMON_DIRS ??= "\
+    STOPTASKS,${TMPDIR},1G,100K \
+    STOPTASKS,${DL_DIR},1G,100K \
+    STOPTASKS,${SSTATE_DIR},1G,100K \
+    STOPTASKS,/tmp,100M,100K \
+    ABORT,${TMPDIR},100M,1K \
+    ABORT,${DL_DIR},100M,1K \
+    ABORT,${SSTATE_DIR},100M,1K \
+    ABORT,/tmp,10M,1K"
+CONF_VERSION = "2"
+
+# Set the root password to '0penBmc'
+# Defaults from meta-phosphor/conf/distro/include/phosphor-defaults.inc
+
+require conf/machine/include/obmc-bsp-common.inc
+require conf/machine/include/obmc-evb-common.inc
+
+IMAGE_CLASSES:remove = " image_types_phosphor"
+IMAGE_FSTYPES:remove += "${@bb.utils.contains_any('DISTRO_FEATURES', \
+        'obmc-ubi-fs', \
+        '', \
+        'mtd-static mtd-static-tar mtd-static-alltar', d)}"
+
+#IMAGE_INSTALL:append += " webui-vue"

@@ -167,3 +167,18 @@ The Technical Steering Committee (TSC) guides the project. Members are:
 - Mail: openbmc@lists.ozlabs.org [https://lists.ozlabs.org/listinfo/openbmc](https://lists.ozlabs.org/listinfo/openbmc)
 - Discord: https://discord.gg/69Km47zH98
 
+## Porting OpenBMC to ASUS Tinker-Board-s
+```
+git clone https://github.com/koweda/openbmc.git -b honister-tinker_board_s
+cd openbmc
+
+export TEMPLATECONF=meta-evb/meta-evb-rockchip/conf
+. openbmc-env
+
+time bitbake obmc-phosphor-image
+```
+ * hdmi cannot display, please use serial console(uart2).
+
+### Upstream
+- https://git.yoctoproject.org/meta-rockchip
+- https://git.yoctoproject.org/meta-arm

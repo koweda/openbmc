@@ -1,0 +1,16 @@
+header:
+  version: 9
+  includes:
+    - base.yml
+    - meta-zephyr.yml
+
+local_conf_header:
+  nonbuilding_tests: |
+    ZEPHYRTESTS:remove = "common"
+  failing_tests: |
+    ZEPHYRTESTS:remove = "context early_sleep sleep"
+
+machine: microbit-v1
+
+target:
+  - zephyr-kernel-test-all

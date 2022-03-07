@@ -1,0 +1,10 @@
+header:
+  version: 9
+  includes:
+    - meta-openembedded.yml
+    - meta-virtualization.yml
+
+repos:
+  meta-arm:
+    layers:
+      meta-arm-autonomy:

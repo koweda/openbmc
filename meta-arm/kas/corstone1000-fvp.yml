@@ -1,0 +1,16 @@
+header:
+  version: 11
+  includes:
+    - kas/corstone1000-base.yml
+
+repos:
+  run-scripts:
+     url: https://git.gitlab.arm.com/arm-reference-solutions/model-scripts.git
+     refspec: 7ad7b6f33bbdb7ae10c7ecfd56820c03a71e9bdf
+     layers:
+      .: 'excluded'
+
+machine: corstone1000-fvp
+
+target:
+  - corstone1000-image

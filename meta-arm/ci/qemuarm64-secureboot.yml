@@ -1,0 +1,19 @@
+header:
+  version: 9
+  includes:
+    - base.yml
+
+machine: qemuarm64-secureboot
+
+local_conf_header:
+  bugs: |
+    # Only ping until errors can be resolved
+    TEST_SUITES = "ping"
+
+target:
+  - core-image-base
+  - perf
+  - optee-examples
+  - optee-test
+  - optee-spdevkit
+  - optee-os-tadevkit
