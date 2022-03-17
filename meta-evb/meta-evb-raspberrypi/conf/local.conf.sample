@@ -1,4 +1,4 @@
-MACHINE ??= "raspberrypi"
+MACHINE ??= "raspberrypi2"
 DISTRO ?= "openbmc-phosphor"
 PACKAGE_CLASSES ?= "package_ipk"
 SANITY_TESTED_DISTROS:append ?= " *"
@@ -21,3 +21,7 @@ CONF_VERSION = "2"
 
 require conf/machine/include/obmc-bsp-common.inc
 require conf/machine/include/obmc-evb-common.inc
+
+ENABLE_I2C = "1"
+FLASH_SIZE = "131072"
+IMAGE_FSTYPES += "rpi-sdimg"

@@ -1,0 +1,27 @@
+From 4c6192364311e62673eca2a9647680df6e175b74 Mon Sep 17 00:00:00 2001
+From: Pat Lin <Pat_Lin@wistron.com>
+Date: Wed, 16 Mar 2022 07:03:15 +0800
+Subject: [PATCH 2/2] Add GPIO led
+
+---
+ arch/arm/boot/dts/bcm2709-rpi-2-b.dts | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/arch/arm/boot/dts/bcm2709-rpi-2-b.dts b/arch/arm/boot/dts/bcm2709-rpi-2-b.dts
+index 373f6519bcd3..a06e242ee599 100644
+--- a/arch/arm/boot/dts/bcm2709-rpi-2-b.dts
++++ b/arch/arm/boot/dts/bcm2709-rpi-2-b.dts
+@@ -113,6 +113,10 @@ pwr_led: led-pwr {
+ 		linux,default-trigger = "input";
+ 		gpios = <&gpio 35 0>;
+ 	};
++
++	led_pi {
++		gpios = <&gpio 26 0>;
++	};
+ };
+ 
+ &hdmi {
+-- 
+2.25.1
+

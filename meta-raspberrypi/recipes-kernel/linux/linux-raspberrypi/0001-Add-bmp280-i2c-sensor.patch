@@ -1,0 +1,42 @@
+From ce0614f521a996b0d63c6e2f681880976ee7d91c Mon Sep 17 00:00:00 2001
+From: Pat Lin <Pat_Lin@wistron.com>
+Date: Wed, 16 Mar 2022 07:01:14 +0800
+Subject: [PATCH 1/2] Add bmp280 i2c sensor
+
+---
+ arch/arm/boot/dts/bcm2709-rpi-2-b.dts | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/arch/arm/boot/dts/bcm2709-rpi-2-b.dts b/arch/arm/boot/dts/bcm2709-rpi-2-b.dts
+index e1381d2b3a2c..373f6519bcd3 100644
+--- a/arch/arm/boot/dts/bcm2709-rpi-2-b.dts
++++ b/arch/arm/boot/dts/bcm2709-rpi-2-b.dts
+@@ -10,6 +10,11 @@
+ / {
+ 	compatible = "raspberrypi,2-model-b", "brcm,bcm2836";
+ 	model = "Raspberry Pi 2 Model B";
++
++	iio-hwmon-bmp280 {
++		compatible = "iio-hwmon";
++		io-channels = <&bmp280 1>;
++	};
+ };
+ 
+ &gpio {
+@@ -78,6 +83,13 @@ &i2c1 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&i2c1_pins>;
+ 	clock-frequency = <100000>;
++	status = "okay";
++
++	bmp280: bmp280@76 {
++		compatible = "bosch,bmp280";
++		reg = <0x76>;
++		#io-channel-cells = <1>;
++	};
+ };
+ 
+ &i2c2 {
+-- 
+2.25.1
+

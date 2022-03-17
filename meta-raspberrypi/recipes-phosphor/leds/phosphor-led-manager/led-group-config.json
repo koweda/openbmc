@@ -1,0 +1,16 @@
+{
+    "leds": [
+        {
+            "group": "bmc_booted",
+            "members": [
+                {
+                    "Name": "led_pi",
+                    "Action" : "Blink",
+                    "DutyOn" : 50,
+                    "Period" : 1000,
+                    "Priority" : "On"
+                }
+            ]
+        }
+    ]
+}
