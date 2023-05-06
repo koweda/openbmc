@@ -1,0 +1,30 @@
+From 1b9f17f2b1bbdfb0a3e1d8b0c7913c40f62a22f0 Mon Sep 17 00:00:00 2001
+From: Pat Lin <Pat_Lin@wistron.com>
+Date: Sat, 6 May 2023 13:07:22 +0000
+Subject: [PATCH] pam-ipmi: add riscv platform
+
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 668f744..71cde18 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -21,11 +21,11 @@ AC_PROG_MAKE_SET
+ AC_CANONICAL_TARGET
+ TARGET_OS_ARCH=""
+ AS_CASE([$target_cpu],
+-        [x86_64|aarch64*|mips64*|ppc64*|sparc64],
++        [x86_64|aarch64*|mips64*|riscv64*|ppc64*|sparc64],
+         [
+             TARGET_OS_ARCH="64"
+         ],
+-        [i?86|arm*|mips*|ppc*|sparc],
++        [i?86|arm*|mips*|riscv*|ppc*|sparc],
+         [
+             TARGET_OS_ARCH="32"
+         ])
+-- 
+2.34.1
+
